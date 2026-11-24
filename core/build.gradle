@@ -1,0 +1,11 @@
+apply plugin: "java-library"
+dependencies {
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+}
+// headless balance run: bot plays every mission, prints completion rates
+tasks.register('sim', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.saedarm.neckswing.Sim'
+    args = [project.findProperty('runs') ?: '40']
+}
